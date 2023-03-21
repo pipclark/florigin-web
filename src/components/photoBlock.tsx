@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { IGroupPhotosFields } from "../../types/generated/contentful";
 
 type GroupPhotosFields = {
 	photo: {
@@ -21,7 +20,7 @@ export default function PhotoBlock() {
 		GroupPhotosFields[]
 	> | null>(null);
 
-	const photosContentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}/`;
+	const contentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}/`;
 	const query = `
     {
         groupPhotosCollection {
@@ -44,7 +43,7 @@ export default function PhotoBlock() {
 
 	useEffect(() => {
 		window
-			.fetch(photosContentfulUrl, {
+			.fetch(contentfulUrl, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -69,13 +68,11 @@ export default function PhotoBlock() {
 		return <p>Loading...</p>;
 	}
 
-	console.log(photos.items);
-
 	return (
 		<div>
 			<h2>Photos</h2>
 			{photos.items.map((photo) => (
-				<img src={photo?.photo.url} />
+				<img src={photo?.photo.url} alt={photo?.photo.title} />
 			))}
 		</div>
 	);
