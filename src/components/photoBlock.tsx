@@ -48,7 +48,7 @@ export default function PhotoBlock() {
 				headers: {
 					"Content-Type": "application/json",
 					// Authenticate the request
-					Authorization: `Bearer ${process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN}`,
+					Authorization: `Bearer ${process.env.REACT_APP_CONTENTFUL_DELIVERY_TOKEN}`,
 				},
 				// send the GraphQL query
 				body: JSON.stringify({ query }),
