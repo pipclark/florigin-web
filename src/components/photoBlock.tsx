@@ -62,7 +62,7 @@ export default function PhotoBlock() {
 				// rerender the entire component with new data
 				setPhotos(data.groupPhotosCollection);
 			});
-	}, []);
+	}, [contentfulUrl, query]);
 
 	if (!photos) {
 		return <p>Loading...</p>;
