@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { getContentful } from "../lib/getContentful";
 
 type GroupPhotosFields = {
 	photo: {
@@ -14,16 +15,16 @@ type GroupPhotosFields = {
 	description: string;
 };
 
+type GroupPhotos = Record<"items", GroupPhotosFields[]>;
+
 export default function PhotoBlock() {
-	const [photos, setPhotos] = useState<Record<
-		"items",
-		GroupPhotosFields[]
-	> | null>(null);
+	const [photos, setPhotos] = useState<GroupPhotos | undefined>();
+	const contentKey = "groupPhotosCollection";
 
 	const contentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}/`;
 	const query = `
     {
-        groupPhotosCollection {
+        ${contentKey} {
             items {
             photo {
               title
@@ -42,26 +43,14 @@ export default function PhotoBlock() {
         `;
 
 	useEffect(() => {
-		window
-			.fetch(contentfulUrl, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					// Authenticate the request
-					Authorization: `Bearer ${process.env.REACT_APP_CONTENTFUL_DELIVERY_TOKEN}`,
-				},
-				// send the GraphQL query
-				body: JSON.stringify({ query }),
-			})
-			.then((response) => response.json())
-			.then(({ data, errors }) => {
-				if (errors) {
-					console.error(errors);
-				}
-
-				// rerender the entire component with new data
-				setPhotos(data.groupPhotosCollection);
-			});
+		const fetchData = async () => {
+			const data = await getContentful<Record<string, GroupPhotos>>(
+				contentfulUrl,
+				query
+			);
+			setPhotos(data?.[contentKey]);
+		};
+		fetchData();
 	}, [contentfulUrl, query]);
 
 	if (!photos) {
@@ -72,7 +61,11 @@ export default function PhotoBlock() {
 		<div>
 			<h2>Photos</h2>
 			{photos.items.map((photo) => (
-				<img src={photo?.photo.url} alt={photo?.photo.title} />
+				<img
+					src={photo?.photo.url}
+					alt={photo?.photo.title}
+					key={photo?.photo.title}
+				/>
 			))}
 		</div>
 	);
