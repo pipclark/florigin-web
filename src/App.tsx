@@ -4,6 +4,8 @@ import "./App.css";
 import PhotoBlock from "./components/photoBlock";
 
 function App() {
+	const contentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}/`;
+
 	return (
 		<div className="App">
 			<header className="App-header">
@@ -21,7 +23,7 @@ function App() {
 				</a>
 			</header>
 
-			<PhotoBlock />
+			<PhotoBlock contentfulUrl={contentfulUrl} />
 		</div>
 	);
 }

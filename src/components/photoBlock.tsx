@@ -17,11 +17,15 @@ type GroupPhotosFields = {
 
 type GroupPhotos = Record<"items", GroupPhotosFields[]>;
 
-export default function PhotoBlock() {
+type PhotoBlockProps = {
+	contentfulUrl: string;
+};
+
+export default function PhotoBlock(props: PhotoBlockProps) {
 	const [photos, setPhotos] = useState<GroupPhotos | undefined>();
 	const contentKey = "groupPhotosCollection";
+	const contentfulUrl = props.contentfulUrl;
 
-	const contentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}/`;
 	const query = `
     {
         ${contentKey} {
