@@ -84,16 +84,24 @@ export default function Gigs(props: GigsProps) {
 		<div>
 			<h2>Upcoming Gigs</h2>
 			<ul>
-				{gigs.items.map((gig) => (
-					<li>
-						{
-							// @ts-ignore // TODO: add tyoes for toLocaleDateString arguments
-							new Date(gig?.dateAndTime).toLocaleDateString("en-GB", options) +
-								", " +
-								gig?.title
-						}
-					</li>
-				))}
+				{gigs.items
+					.sort((a, b) => {
+						return Date.parse(a?.dateAndTime) - Date.parse(b?.dateAndTime);
+					})
+					.map((gig) => (
+						<li>
+							{
+								// TODO: add tyoes for toLocaleDateString arguments
+								new Date(gig?.dateAndTime).toLocaleDateString(
+									"en-GB",
+									//@ts-ignore
+									options
+								) +
+									", " +
+									gig?.title
+							}
+						</li>
+					))}
 			</ul>
 		</div>
 	);
