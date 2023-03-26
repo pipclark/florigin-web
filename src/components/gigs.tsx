@@ -25,7 +25,7 @@ type GigsProps = {
 	contentfulUrl: string;
 };
 
-export default function Gigs(props: GigsProps) {
+export default function GigsList(props: GigsProps) {
 	const [gigs, setGigs] = useState<Gigs | undefined>();
 	const contentKey = "gigsCollection";
 	const contentfulUrl = props.contentfulUrl;
@@ -73,7 +73,6 @@ export default function Gigs(props: GigsProps) {
 			setGigs(data?.[contentKey]);
 		};
 		fetchData();
-		console.log(gigs);
 	}, [contentfulUrl, query]);
 
 	if (!gigs) {
