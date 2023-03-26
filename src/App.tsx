@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import PhotoBlock from "./components/photoBlock";
+import Gigs from "./components/gigs";
 
 function App() {
 	const contentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACE_ID}/`;
@@ -23,6 +24,7 @@ function App() {
 				</a>
 			</header>
 
+			<Gigs contentfulUrl={contentfulUrl}></Gigs>
 			<PhotoBlock contentfulUrl={contentfulUrl} />
 		</div>
 	);
