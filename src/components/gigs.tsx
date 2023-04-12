@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { getContentful } from "../lib/getContentful";
+import GigMap from "./gigMap";
 
-type GigFields = {
+export type Gig = {
 	title: string;
 	description: string;
 	location: {
@@ -19,7 +20,7 @@ type GigFields = {
 	};
 };
 
-type Gigs = Record<"items", GigFields[]>;
+type Gigs = Record<"items", Gig[]>;
 
 type GigsProps = {
 	contentfulUrl: string;
@@ -88,7 +89,7 @@ export default function GigsList(props: GigsProps) {
 						return Date.parse(a?.dateAndTime) - Date.parse(b?.dateAndTime);
 					})
 					.map((gig) => (
-						<li>
+						<li key={gig?.title}>
 							{
 								// TODO: add tyoes for toLocaleDateString arguments
 								new Date(gig?.dateAndTime).toLocaleDateString(
@@ -101,6 +102,7 @@ export default function GigsList(props: GigsProps) {
 							}
 						</li>
 					))}
+				<GigMap gigs={gigs.items}></GigMap>
 			</ul>
 		</div>
 	);
