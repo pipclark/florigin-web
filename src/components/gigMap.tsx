@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import {
 	GoogleMap,
-	Marker,
 	MarkerF,
 	useLoadScript,
-	InfoWindow,
 	InfoWindowF,
 } from "@react-google-maps/api";
 import { Gig } from "./Gigs";
