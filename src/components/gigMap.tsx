@@ -37,6 +37,7 @@ const Map: React.FC<MapProps> = ({ googleMapsApiKey, gigs }: MapProps) => {
 		maxWidth: "90%",
 		height: "50vH",
 		margin: "auto",
+		zIndex: 0,
 	};
 
 	const center: Coordinates = {
