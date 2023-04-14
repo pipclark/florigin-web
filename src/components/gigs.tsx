@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getContentful } from "../lib/getContentful";
-import GigMap from "./gigMap";
+import GigMap from "./GigMap";
 
 export type Gig = {
 	title: string;

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import GigsList from "../../components/gigs";
+import GigsList from "../../components/Gigs";
 
 test("renders learn react link", () => {
 	const mockContentfulUrl = "www.contentFul.example.com";

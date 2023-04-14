@@ -7,7 +7,7 @@ import {
 	InfoWindow,
 	InfoWindowF,
 } from "@react-google-maps/api";
-import { Gig } from "./gigs";
+import { Gig } from "./Gigs";
 
 type Coordinates = {
 	lat: number;
