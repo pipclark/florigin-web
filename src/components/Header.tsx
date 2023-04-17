@@ -8,7 +8,7 @@ function Header() {
 
 	return (
 		<header className={isOpen ? "active" : ""}>
-			<nav className={isOpen ? "active" : ""}>
+			<nav className={isOpen ? "active" : ""} onClick={() => setOpen(false)}>
 				<ul>
 					<li>
 						<NavLink to="/">Home</NavLink>
