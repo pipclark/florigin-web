@@ -54,7 +54,7 @@ nav a {
   .burger {
     display: flex;
     align-items: left;
-    margin: 1rem;
+    margin-top: 1rem;
     position: fixed;
   }
 
