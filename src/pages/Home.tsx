@@ -1,6 +1,6 @@
 import React from "react";
 import GigsList from "../components/Gigs";
-import PhotoBlock from "../components/PhotoBlock";
+import RandomPhoto from "../components/RandomPhoto";
 import { contentfulUrl } from "../urls";
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
 		<div>
 			<GigsList contentfulUrl={contentfulUrl}></GigsList>
 
-			<PhotoBlock contentfulUrl={contentfulUrl} />
+			<RandomPhoto contentfulUrl={contentfulUrl} />
 		</div>
 	);
 }
