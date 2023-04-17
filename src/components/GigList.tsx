@@ -1,5 +1,7 @@
 import React from "react";
 import { Gig } from "./Gigs";
+import "../styles/Gigs.css";
+import { Link } from "react-router-dom";
 
 type GigListProps = {
 	gigs: Gig[];
@@ -24,17 +26,16 @@ export default function GigList({ gigs }: GigListProps) {
 						return Date.parse(a?.dateAndTime) - Date.parse(b?.dateAndTime);
 					})
 					.map((gig) => (
-						<li key={gig?.title}>
+						<li key={gig?.title} onClick={() => gig?.link}>
 							{
 								// TODO: add tyoes for toLocaleDateString arguments
 								new Date(gig?.dateAndTime).toLocaleDateString(
 									"en-GB",
 									//@ts-ignore
 									options
-								) +
-									", " +
-									gig?.title
+								)
 							}
+							<Link to={gig?.link}> {gig?.title}</Link>
 						</li>
 					))}
 			</ul>
