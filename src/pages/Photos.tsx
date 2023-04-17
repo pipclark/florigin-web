@@ -1,5 +1,12 @@
 import React from "react";
+import PhotoBlock from "../components/PhotoBlock";
+import { contentfulUrl } from "../urls";
 
 export default function Photos() {
-	return <div>Coming soon...</div>;
+	return (
+		<div>
+			<h1>Photos</h1>
+			<PhotoBlock contentfulUrl={contentfulUrl} />
+		</div>
+	);
 }

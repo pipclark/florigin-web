@@ -54,7 +54,6 @@ const Map: React.FC<MapProps> = ({ googleMapsApiKey, gigs }: MapProps) => {
 
 	if (loadError) return <div>Error loading maps</div>;
 	if (!isLoaded) return <div>Loading maps</div>;
-	console.log(gigs);
 
 	return (
 		<GoogleMap mapContainerStyle={mapContainerStyle} zoom={5} center={center}>
@@ -64,7 +63,6 @@ const Map: React.FC<MapProps> = ({ googleMapsApiKey, gigs }: MapProps) => {
 					position={{ lat: gig.location.lat, lng: gig.location.lon }}
 					onClick={() => {
 						setSelectedMarker(gig);
-						console.log(selectedMarker);
 					}}
 				>
 					{selectedMarker?.title === gig.title && (

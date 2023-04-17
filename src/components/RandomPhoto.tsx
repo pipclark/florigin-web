@@ -21,7 +21,7 @@ type PhotoBlockProps = {
 	contentfulUrl: string;
 };
 
-export default function PhotoBlock(props: PhotoBlockProps) {
+export default function RandomPhoto(props: PhotoBlockProps) {
 	const [photos, setPhotos] = useState<GroupPhotos | undefined>();
 	const contentKey = "groupPhotosCollection";
 	const contentfulUrl = props.contentfulUrl;

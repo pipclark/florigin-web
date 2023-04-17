@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getContentful } from "../lib/getContentful";
+import "../styles/PhotoBlock.css";
 
 type GroupPhotosFields = {
 	photo: {
@@ -25,6 +26,7 @@ export default function PhotoBlock(props: PhotoBlockProps) {
 	const [photos, setPhotos] = useState<GroupPhotos | undefined>();
 	const contentKey = "groupPhotosCollection";
 	const contentfulUrl = props.contentfulUrl;
+	const [photoClicked, setphotoClicked] = useState<string | null>(null);
 
 	const query = `
     {
@@ -63,14 +65,24 @@ export default function PhotoBlock(props: PhotoBlockProps) {
 
 	return (
 		<div>
-			<h2>Photos</h2>
-			{photos.items.map((photo) => (
-				<img
-					src={photo?.photo.url}
-					alt={photo?.photo.title}
-					key={photo?.photo.title}
-				/>
-			))}
+			<div className={photoClicked ? "photoBlockClicked" : "photoBlock"}>
+				{photos.items.map((photo) => (
+					<img
+						className={
+							photo?.description === photoClicked ? "photoClicked" : "photo"
+						}
+						src={photo?.photo.url}
+						alt={photo?.photo.title}
+						key={photo?.photo.title}
+						onClick={() => {
+							photoClicked
+								? setphotoClicked(null)
+								: setphotoClicked(photo?.description);
+						}}
+					/>
+				))}
+				<h3 className={photoClicked ? "clicked" : ""}>{photoClicked}</h3>
+			</div>
 		</div>
 	);
 }
