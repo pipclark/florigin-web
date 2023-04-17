@@ -15,10 +15,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<div className="App">
-				<header className="header">
-					<Header />
-					<h1>Florigin</h1>
-				</header>
+				<Header />
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/gigs" element={<Gigs />} />

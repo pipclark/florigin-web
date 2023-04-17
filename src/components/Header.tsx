@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Hamburger from "hamburger-react";
+import "../styles/Header.css";
 
 function Header() {
 	const [isOpen, setOpen] = useState(false);
 
 	return (
-		<header>
+		<header className={isOpen ? "active" : ""}>
 			<nav className={isOpen ? "active" : ""}>
 				<ul>
 					<li>
@@ -39,6 +39,7 @@ function Header() {
 			<div className="burger">
 				<Hamburger toggled={isOpen} toggle={setOpen} />
 			</div>
+			<h1>Florigin</h1>
 		</header>
 	);
 }
