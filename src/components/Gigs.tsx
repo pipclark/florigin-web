@@ -6,6 +6,7 @@ import GigMap from "./GigMap";
 export type Gig = {
 	title: string;
 	description: string;
+	citycountry: string;
 	location: {
 		lat: number;
 		lon: number;
@@ -40,6 +41,7 @@ export default function GigsList(props: GigsProps) {
         items {
         title
         description
+				citycountry
         location {
           lat
           lon

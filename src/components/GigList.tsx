@@ -17,6 +17,8 @@ export default function GigList({ gigs }: GigListProps) {
 		//timeZoneName: "long",
 	};
 
+	console.log(gigs);
+
 	return (
 		<div>
 			<h2>Upcoming Gigs</h2>
@@ -35,10 +37,15 @@ export default function GigList({ gigs }: GigListProps) {
 									options
 								)
 							}
+
+							<div>{gig.citycountry}</div>
 							<Link to={gig?.link}> {gig?.title}</Link>
 						</li>
 					))}
 			</ul>
 		</div>
 	);
+}
+function getCityCountry(arg0: number, arg1: number) {
+	throw new Error("Function not implemented.");
 }
