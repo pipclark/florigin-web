@@ -6,7 +6,7 @@ import { contentfulUrl } from "../urls";
 export default function Home() {
 	return (
 		<div>
-			<GigsList contentfulUrl={contentfulUrl}></GigsList>
+			<GigsList contentfulUrl={contentfulUrl} displayMap={false}></GigsList>
 
 			<RandomPhoto contentfulUrl={contentfulUrl} />
 		</div>

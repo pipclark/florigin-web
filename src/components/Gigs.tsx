@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getContentful } from "../lib/getContentful";
+import GigList from "./GigList";
 import GigMap from "./GigMap";
 
 export type Gig = {
@@ -24,21 +25,14 @@ type Gigs = Record<"items", Gig[]>;
 
 type GigsProps = {
 	contentfulUrl: string;
+	displayMap: boolean;
 };
 
 export default function GigsList(props: GigsProps) {
 	const [gigs, setGigs] = useState<Gigs | undefined>();
 	const contentKey = "gigsCollection";
 	const contentfulUrl = props.contentfulUrl;
-
-	const options = {
-		year: "numeric",
-		month: "long",
-		day: "numeric",
-		hour: "numeric",
-		minute: "numeric",
-		//timeZoneName: "long",
-	};
+	const displayMap = props.displayMap;
 
 	const query = `
   {
@@ -80,30 +74,17 @@ export default function GigsList(props: GigsProps) {
 		return <p>Loading Gigs...</p>;
 	}
 
+	if (displayMap) {
+		return (
+			<div>
+				<GigList gigs={gigs.items} />
+				<GigMap gigs={gigs.items}></GigMap>
+			</div>
+		);
+	}
 	return (
 		<div>
-			<h2>Upcoming Gigs</h2>
-			<ul>
-				{gigs.items
-					.sort((a, b) => {
-						return Date.parse(a?.dateAndTime) - Date.parse(b?.dateAndTime);
-					})
-					.map((gig) => (
-						<li key={gig?.title}>
-							{
-								// TODO: add tyoes for toLocaleDateString arguments
-								new Date(gig?.dateAndTime).toLocaleDateString(
-									"en-GB",
-									//@ts-ignore
-									options
-								) +
-									", " +
-									gig?.title
-							}
-						</li>
-					))}
-				<GigMap gigs={gigs.items}></GigMap>
-			</ul>
+			<GigList gigs={gigs.items} />
 		</div>
 	);
 }

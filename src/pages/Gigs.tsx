@@ -5,7 +5,7 @@ import { contentfulUrl } from "../urls";
 export default function Gigs() {
 	return (
 		<div>
-			<GigsList contentfulUrl={contentfulUrl}></GigsList>
+			<GigsList contentfulUrl={contentfulUrl} displayMap={true}></GigsList>
 		</div>
 	);
 }
