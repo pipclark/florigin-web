@@ -52,3 +52,19 @@
   bottom: 50px;
   left: calc(50% - 50px);
 }
+
+@media screen and (max-width: 768px) {
+  .photoBlock {
+    align-content: center;
+  }
+
+  .photoBlock .photo {
+    min-width: 70%;
+    min-height: 70%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+    margin: auto;
+    margin-bottom: 30px;
+    text-align: -webkit-center;
+  }
+}
