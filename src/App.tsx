@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./styles/App.css";
 import Header from "./components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -16,16 +16,18 @@ function App() {
 		<BrowserRouter>
 			<div className="App">
 				<Header />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/gigs" element={<Gigs />} />
-					<Route path="/photos" element={<Photos />} />
-					<Route path="/merch" element={<Merch />} />
-					<Route path="/contact" element={<Contact />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/news" element={<News />} />
-					<Route path="/videos" element={<Videos />} />
-				</Routes>
+				<div className="content">
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/gigs" element={<Gigs />} />
+						<Route path="/photos" element={<Photos />} />
+						<Route path="/merch" element={<Merch />} />
+						<Route path="/contact" element={<Contact />} />
+						<Route path="/about" element={<About />} />
+						<Route path="/news" element={<News />} />
+						<Route path="/videos" element={<Videos />} />
+					</Routes>
+				</div>
 			</div>
 		</BrowserRouter>
 	);

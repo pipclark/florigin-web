@@ -45,6 +45,11 @@ nav a {
   /* Style for small screens */
   header {
     display:grid;
+    position: fixed;
+    width: 100%;
+    min-height: 20vh;
+    z-index: 2;
+    top: 0
   }
 
   nav ul {

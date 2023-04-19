@@ -1,0 +1,11 @@
+.App {
+	text-align: center;
+}
+
+
+@media screen and (max-width: 768px) {
+  .content {
+    position: relative;
+    top: 25vh;
+  }
+}
