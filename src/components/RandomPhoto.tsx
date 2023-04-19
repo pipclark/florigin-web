@@ -1,22 +1,7 @@
 import { useState, useEffect } from "react";
 import { getContentful } from "../lib/getContentful";
 import "../styles/RandomPhoto.css";
-
-type GroupPhotosFields = {
-	photo: {
-		title: string;
-		description: string;
-		contentType: string;
-		fileName: string;
-		size: number;
-		url: string;
-		width: number;
-		height: number;
-	};
-	description: string;
-};
-
-type GroupPhotos = Record<"items", GroupPhotosFields[]>;
+import { GroupPhotos, GroupPhotosFields } from "./PhotoBlock";
 
 type PhotoBlockProps = {
 	contentfulUrl: string;

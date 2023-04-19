@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getContentful } from "../lib/getContentful";
 import "../styles/PhotoBlock.css";
 
-type GroupPhotosFields = {
+export type GroupPhotosFields = {
 	photo: {
 		title: string;
 		description: string;
@@ -16,7 +16,7 @@ type GroupPhotosFields = {
 	description: string;
 };
 
-type GroupPhotos = Record<"items", GroupPhotosFields[]>;
+export type GroupPhotos = Record<"items", GroupPhotosFields[]>;
 
 type PhotoBlockProps = {
 	contentfulUrl: string;
