@@ -22,24 +22,29 @@ export default function GigList({ gigs }: GigListProps) {
 	return (
 		<div>
 			<h2>Upcoming Gigs</h2>
-			<ul>
+			<ul className="gigList">
 				{gigs
 					.sort((a, b) => {
 						return Date.parse(a?.dateAndTime) - Date.parse(b?.dateAndTime);
 					})
 					.map((gig) => (
-						<li key={gig?.title} onClick={() => gig?.link}>
-							{
-								// TODO: add tyoes for toLocaleDateString arguments
-								new Date(gig?.dateAndTime).toLocaleDateString(
-									"en-GB",
-									//@ts-ignore
-									options
-								)
-							}
-
-							<div>{gig.citycountry}</div>
-							<Link to={gig?.link}> {gig?.title}</Link>
+						<li className="gigItem" key={gig?.title} onClick={() => gig?.link}>
+							<ul className="gigDetails">
+								<li className="dateTime">
+									{
+										// TODO: add tyoes for toLocaleDateString arguments
+										new Date(gig?.dateAndTime).toLocaleDateString(
+											"en-GB",
+											//@ts-ignore
+											options
+										)
+									}
+								</li>
+								<li className="cityCountry">{gig.citycountry}</li>
+								<li className="venue">
+									<Link to={gig?.link}> {gig?.title}</Link>
+								</li>
+							</ul>
 						</li>
 					))}
 			</ul>

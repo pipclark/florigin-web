@@ -1,23 +1,42 @@
-ul {
-  display: flex;
+.gigList {
+  display: grid;
+  row-gap: 10px;
   flex-direction: column;
   flex-wrap: wrap;
   text-align: center;
-  padding: 10px;
+  padding : 10px;
   width: 80%;
   margin-left: 10%;
   list-style: none;
 }
 
-li {
-  display: flex;
-  justify-content: space-between;
+.gigItem {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  padding-bottom: 10px;
   box-sizing: border-box;
 }
 
-a {
+.gigDetails {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 40% 30% 30%;
+  column-gap: 2%;
+  padding-inline-start: 0px;
+}
+
+.dateTime {
+  text-align: left;
+}
+
+.cityCountry {
+  text-align: left;
+}
+
+.venue {
+  text-align: right;
+}
+
+.venue a {
   color: rgb(196, 122, 122);
   text-decoration: solid;
 }
