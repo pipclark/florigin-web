@@ -1,7 +1,13 @@
+@font-face {
+  font-family: tostada;
+  src: url("fonts/tostada/TOSTADA.ttf");
+}
 
 h1 {
   text-align: center;
   font-size: 3em;
+  color: #ff726d;
+  font-family: tostada, sans-serif;
 }
 
 /* Style for header */
