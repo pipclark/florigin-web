@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getContentful } from "../lib/getContentful";
+import "../styles/RandomPhoto.css";
 
 type GroupPhotosFields = {
 	photo: {
@@ -71,7 +72,11 @@ export default function RandomPhoto(props: PhotoBlockProps) {
 	return (
 		<div>
 			<h2>The band</h2>
-			<img src={randomPhoto?.photo.url} alt={randomPhoto?.photo.title} />
+			<img
+				className="singleBandPhoto"
+				src={randomPhoto?.photo.url}
+				alt={randomPhoto?.photo.title}
+			/>
 		</div>
 	);
 }
