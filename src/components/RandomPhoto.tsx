@@ -3,13 +3,13 @@ import { getContentful } from "../lib/getContentful";
 import "../styles/RandomPhoto.css";
 import { GroupPhotos, GroupPhotosFields } from "./PhotoBlock";
 
-type PhotoBlockProps = {
+type RandomPhotoProps = {
 	contentfulUrl: string;
 };
 
-export default function RandomPhoto(props: PhotoBlockProps) {
+export default function RandomPhoto(props: RandomPhotoProps) {
 	const [photos, setPhotos] = useState<GroupPhotos | undefined>();
-	const contentKey = "groupPhotosCollection";
+	const contentKey = "homePagePhotosCollection";
 	const contentfulUrl = props.contentfulUrl;
 	let [randomPhoto, setRandomPhoto] = useState<GroupPhotosFields | undefined>();
 
