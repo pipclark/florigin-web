@@ -48,6 +48,20 @@ nav a {
   display: none;
 }
 
+.socialIcons {
+  display: flex;
+  min-height: 20px;
+  min-width: 50%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.socialIcons a {
+  text-decoration: solid;
+  color: white;
+
+}
+
 @media screen and (max-width: 768px) {
   /* Style for small screens */
   header {
@@ -95,5 +109,10 @@ nav a {
     z-index: 0;
 		font-size: 2rem;
 		line-height: 3rem;
+  }
+
+  .socialIcons {
+    width: 80%;
+    margin-left: 10%;
   }
 }
