@@ -68,9 +68,10 @@ nav a {
     display:grid;
     position: fixed;
     width: 100%;
-    min-height: 20vh;
+    height: 15vh;
     z-index: 2;
-    top: 0
+    top: 0;
+    transition: height 0.5s;
   }
 
   nav ul {
@@ -81,8 +82,12 @@ nav a {
     display: flex;
     align-items: left;
     margin-top: 1rem;
-    position: fixed;
+    position: absolute;
+    top: 1vh;
+    left: 2vh;
   }
+
+  
 
 
   header.active {
@@ -91,8 +96,9 @@ nav a {
 
   header.active h1 {
     position: absolute;
-    left: 15vh;
+    left: 25%;
     bottom: 3vh;
+
   }
 
 
@@ -109,10 +115,15 @@ nav a {
     z-index: 0;
 		font-size: 2rem;
 		line-height: 3rem;
+    transition: height 0.5s;
   }
 
   .socialIcons {
     width: 80%;
-    margin-left: 10%;
+    margin-left: 7%;
+  }
+
+  .socialIconsActive {
+    display: none;
   }
 }

@@ -48,7 +48,7 @@ function Header() {
 				<Hamburger toggled={isOpen} toggle={setOpen} />
 			</div>
 			<h1>Florigin</h1>
-			<div className="socialIcons">
+			<div className={isOpen ? "socialIconsActive" : "socialIcons"}>
 				<a href="https://www.youtube.com/channel/UCw-4Hs42k567JbGiEGyBIFw">
 					<FontAwesomeIcon icon={faYoutube} />
 				</a>
