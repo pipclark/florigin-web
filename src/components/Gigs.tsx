@@ -80,6 +80,7 @@ export default function GigsList(props: GigsProps) {
 		return (
 			<div>
 				<GigList gigs={gigs.items} />
+				<h2>Find an future Florigin gig near you!</h2>
 				<GigMap gigs={gigs.items}></GigMap>
 			</div>
 		);
