@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Gig } from "./Gigs";
-import "../styles/Gigs.css";
+import "../styles/News.css";
 import { Link } from "react-router-dom";
 import { getContentful } from "../lib/getContentful";
 
@@ -10,8 +10,8 @@ type NewsProps = {
 
 interface News {
 	title: string;
-	maintext: string;
-	todaysdate: string;
+	mainText: string;
+	date: string;
 	link: string;
 	photo: {
 		title: string;
@@ -69,6 +69,7 @@ export default function NewsItems(props: NewsProps) {
 	}, [contentfulUrl, query]);
 
 	console.log(news);
+	console.log(news?.items.map((item) => console.log(item.date)));
 
 	if (!news) {
 		return <p>Loading News...</p>;
@@ -80,7 +81,7 @@ export default function NewsItems(props: NewsProps) {
 			<ul className="news">
 				{news.items
 					.sort((a, b) => {
-						return Date.parse(a?.todaysdate) - Date.parse(b?.todaysdate);
+						return Date.parse(a?.date) - Date.parse(b?.date);
 					})
 					.map((newsItem) => (
 						<li
@@ -88,21 +89,20 @@ export default function NewsItems(props: NewsProps) {
 							key={newsItem?.title}
 							onClick={() => newsItem?.link}
 						>
-							<ul className="newsDetails">
-								<li className="dateTime">
-									{
-										// TODO: add tyoes for toLocaleDateString arguments
-										new Date(newsItem?.todaysdate).toLocaleDateString(
-											"en-GB",
-											//@ts-ignore
-											options
-										)
-									}
+							<ul className="newsContainer">
+								<li className="newsDate">
+									{new Date(newsItem?.date).toLocaleDateString(
+										"en-GB",
+										//@ts-ignore
+										options
+									)}
 								</li>
-								<li className="venue">
+								<li className="newsTitle">
 									<Link to={newsItem?.link}> {newsItem?.title}</Link>
 								</li>
+								<p className="newsText">{newsItem.mainText}</p>
 							</ul>
+							<img className="newsPhoto" src={newsItem?.photo?.url}></img>
 						</li>
 					))}
 			</ul>
