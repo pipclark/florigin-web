@@ -75,7 +75,7 @@ export default function NewsItems(props: NewsProps) {
 	if (displayLatestOnly) {
 		news.items = [
 			news.items.sort((a, b) => {
-				return Date.parse(a?.date) - Date.parse(b?.date);
+				return Date.parse(b?.date) - Date.parse(a?.date);
 			})[0],
 		];
 	}
@@ -86,7 +86,7 @@ export default function NewsItems(props: NewsProps) {
 			<ul className="news">
 				{news.items
 					.sort((a, b) => {
-						return Date.parse(a?.date) - Date.parse(b?.date);
+						return Date.parse(b?.date) - Date.parse(a?.date);
 					})
 					.map((newsItem) => (
 						<li

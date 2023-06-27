@@ -13,7 +13,7 @@
 }
 
 .newsTitle {
-  width: 45%;
+  width: 65%;
   font-size: 24px;
   font-weight: bold;
   float: left;
@@ -31,7 +31,7 @@ p {
 
 .newsDate {
   float: right;
-  width: 50%;
+  width: 30%;
   text-align: right;
   list-style: none;
   margin: 5px;
@@ -54,6 +54,7 @@ p {
   max-width: 80%;
   max-height: 250px;
   text-align: right;
+  margin: 5px;
 }
 
 @media screen and (max-width: 768px) {
