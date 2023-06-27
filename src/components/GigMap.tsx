@@ -57,26 +57,31 @@ const Map: React.FC<MapProps> = ({ googleMapsApiKey, gigs }: MapProps) => {
 
 	return (
 		<GoogleMap mapContainerStyle={mapContainerStyle} zoom={5} center={center}>
-			{gigs.map((gig) => (
-				<MarkerF
-					key={gig.title}
-					position={{ lat: gig.location.lat, lng: gig.location.lon }}
-					onClick={() => {
-						setSelectedMarker(gig);
-					}}
-				>
-					{selectedMarker?.title === gig.title && (
-						<InfoWindowF
-							position={{ lat: gig.location.lat, lng: gig.location.lon }}
-							onCloseClick={() => {
-								setSelectedMarker(null);
-							}}
-						>
-							<a href={gig.link}>{gig.title}</a>
-						</InfoWindowF>
-					)}
-				</MarkerF>
-			))}
+			{gigs
+				.filter((gig) => Date.parse(gig.dateAndTime) > Date.now())
+				.sort((a, b) => {
+					return Date.parse(a?.dateAndTime) - Date.parse(b?.dateAndTime);
+				})
+				.map((gig) => (
+					<MarkerF
+						key={gig.title}
+						position={{ lat: gig.location.lat, lng: gig.location.lon }}
+						onClick={() => {
+							setSelectedMarker(gig);
+						}}
+					>
+						{selectedMarker?.title === gig.title && (
+							<InfoWindowF
+								position={{ lat: gig.location.lat, lng: gig.location.lon }}
+								onCloseClick={() => {
+									setSelectedMarker(null);
+								}}
+							>
+								<a href={gig.link}>{gig.title}</a>
+							</InfoWindowF>
+						)}
+					</MarkerF>
+				))}
 
 			<></>
 		</GoogleMap>
