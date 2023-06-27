@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
-  width: calc(80% - 40px); /* This will give a 20px margin between each photo block */
+  width: calc(100% - 40px); /* This will give a 20px margin between each photo block */
   margin: 20px;
   box-sizing: border-box;
   overflow: hidden;
@@ -40,11 +40,12 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
   background: rgba(0, 0, 0, 0.8);
   object-fit: contain;
 }
 /*maybe add transition here */
+
 
 .photoBlockClicked h3 {
   z-index: 100;
