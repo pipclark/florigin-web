@@ -32,8 +32,6 @@ export default function NewsItems(props: NewsProps) {
 		year: "numeric",
 		month: "long",
 		day: "numeric",
-		hour: "numeric",
-		minute: "numeric",
 	};
 
 	const query = `
