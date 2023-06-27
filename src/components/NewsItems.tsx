@@ -21,7 +21,7 @@ interface News {
 		width: number;
 		height: number;
 	};
-} // TODO add video to type and query
+}
 
 type NewsItems = Record<"items", News[]>;
 

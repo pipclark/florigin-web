@@ -8,7 +8,7 @@ import About from "./pages/About";
 import Photos from "./pages/Photos";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
-import Videos from "./Videos";
+import Videos from "./pages/Videos";
 import Merch from "./pages/Merch";
 
 function App() {
