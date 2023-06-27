@@ -27,6 +27,7 @@ type Gigs = Record<"items", Gig[]>;
 type GigsProps = {
 	contentfulUrl: string;
 	displayMap: boolean;
+	displayPastGigs: boolean;
 };
 
 export default function GigsList(props: GigsProps) {
@@ -34,6 +35,7 @@ export default function GigsList(props: GigsProps) {
 	const contentKey = "gigsCollection";
 	const contentfulUrl = props.contentfulUrl;
 	const displayMap = props.displayMap;
+	const displayPastGigs = props.displayPastGigs;
 
 	const query = `
   {
@@ -76,18 +78,26 @@ export default function GigsList(props: GigsProps) {
 		return <p>Loading Gigs...</p>;
 	}
 
+	if (!displayPastGigs) {
+		gigs.items = gigs.items
+			.filter((gig) => Date.parse(gig.dateAndTime) > Date.now())
+			.sort((a, b) => {
+				return Date.parse(a?.dateAndTime) - Date.parse(b?.dateAndTime);
+			});
+	}
+
 	if (displayMap) {
 		return (
 			<div>
-				<GigList gigs={gigs.items} />
-				<h2>Find an future Florigin gig near you!</h2>
+				<GigList gigs={gigs.items} displayPastGigs={displayPastGigs} />
+				<h2>Find a future Florigin gig near you!</h2>
 				<GigMap gigs={gigs.items}></GigMap>
 			</div>
 		);
 	}
 	return (
 		<div>
-			<GigList gigs={gigs.items} />
+			<GigList gigs={gigs.items} displayPastGigs={displayPastGigs} />
 		</div>
 	);
 }

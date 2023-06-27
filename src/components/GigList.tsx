@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 
 type GigListProps = {
 	gigs: Gig[];
+	displayPastGigs: boolean;
 };
 
-export default function GigList({ gigs }: GigListProps) {
+export default function GigList({ gigs, displayPastGigs }: GigListProps) {
 	const options = {
 		year: "numeric",
 		month: "long",
@@ -17,8 +18,11 @@ export default function GigList({ gigs }: GigListProps) {
 		//timeZoneName: "long",
 	};
 
-	console.log(gigs);
-
+	let previousGigsSubtitle = "";
+	if (displayPastGigs) {
+		previousGigsSubtitle = "Previous Gigs";
+	}
+	console.log(displayPastGigs);
 	return (
 		<div>
 			<h2>Upcoming Gigs</h2>
@@ -49,7 +53,7 @@ export default function GigList({ gigs }: GigListProps) {
 						</li>
 					))}
 			</ul>
-			<h3>Previous Gigs</h3>
+			<h3>{previousGigsSubtitle}</h3>
 			<ul className="gigList">
 				{gigs
 					.filter((gig) => Date.parse(gig.dateAndTime) < Date.now())
@@ -80,6 +84,7 @@ export default function GigList({ gigs }: GigListProps) {
 		</div>
 	);
 }
+
 function getCityCountry(arg0: number, arg1: number) {
 	throw new Error("Function not implemented.");
 }
