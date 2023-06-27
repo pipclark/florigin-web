@@ -1,6 +1,6 @@
 .news {
   list-style: none;
-  padding: 0;
+  padding: 0  ;
 }
 
 .newsContainer {
@@ -60,6 +60,9 @@ p {
   .newsContent {
     flex-wrap: wrap;
     justify-content: center;
+  }
+  .newsTitle {
+    width: 90%;
   }
 }
 
