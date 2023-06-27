@@ -46,13 +46,19 @@ p {
 
 .newsText {
   margin: 5px;
-  width: 100%;
   text-align: left;
 }
 
 .newsPhoto {
-  max-width: 50%;
+  max-width: 80%;
   max-height: 250px;
   text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+  .newsContent {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
