@@ -5,7 +5,10 @@ import { contentfulUrl } from "../urls";
 export default function News() {
 	return (
 		<div>
-			<NewsItems contentfulUrl={contentfulUrl}></NewsItems>
+			<NewsItems
+				contentfulUrl={contentfulUrl}
+				displayLatestOnly={false}
+			></NewsItems>
 		</div>
 	);
 }

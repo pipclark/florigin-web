@@ -6,6 +6,7 @@ import { getContentful } from "../lib/getContentful";
 
 type NewsProps = {
 	contentfulUrl: string;
+	displayLatestOnly: boolean;
 };
 
 interface News {
@@ -28,6 +29,7 @@ export default function NewsItems(props: NewsProps) {
 	const [news, setNews] = useState<NewsItems | undefined>();
 	const contentKey = "newsCollection";
 	const contentfulUrl = props.contentfulUrl;
+	const displayLatestOnly = props.displayLatestOnly;
 	const options = {
 		year: "numeric",
 		month: "long",
@@ -66,11 +68,16 @@ export default function NewsItems(props: NewsProps) {
 		fetchData();
 	}, [contentfulUrl, query]);
 
-	console.log(news);
-	console.log(news?.items.map((item) => console.log(item.date)));
-
 	if (!news) {
 		return <p>Loading News...</p>;
+	}
+
+	if (displayLatestOnly) {
+		news.items = [
+			news.items.sort((a, b) => {
+				return Date.parse(a?.date) - Date.parse(b?.date);
+			})[0],
+		];
 	}
 
 	return (
