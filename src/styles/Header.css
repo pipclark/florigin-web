@@ -75,7 +75,23 @@ nav a {
   }
 
   nav ul {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0rem;
+    left: 0;
+    font-size: 2rem;
+		line-height: 3rem;
+
+    opacity: 0%;
+    width: 0;
+    height: 0;
+    transition: opacity 1s;
+  }
+
+  nav a {
+    opacity: 0%;
   }
 
   .burger {
@@ -105,19 +121,16 @@ nav a {
 
 
 	nav.active ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    top: 0rem;
-    left: 0;
     width: 100%;
     height: fit-content;
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 0;
-		font-size: 2rem;
-		line-height: 3rem;
-    transition: height 0.5s;
+		
+    opacity: 90%;
+  }
+
+  nav.active a {
+    opacity: 90%;
   }
 
   .socialIcons {
