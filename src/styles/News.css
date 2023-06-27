@@ -4,18 +4,28 @@
 
 .newsContainer {
   width: 80%;
-  margin: 0 auto;
-  
+  margin: 20px auto;
+  padding: 10px;
+  border-style: dashed;  
+  border-color: brown;
+  min-height: auto;
 }
 
 .newsTitle {
+  width: 45%;
   font-size: 24px;
   font-weight: bold;
   float: left;
-  width: 50%;
-  list-style: none;
-  margin: 10px;
+  margin: 5px;
   text-align: left;
+}
+
+a {
+  color: pink
+}
+
+p { 
+  font-size: 18px;
 }
 
 .newsDate {
@@ -23,16 +33,26 @@
   width: 50%;
   text-align: right;
   list-style: none;
+  margin: 5px;
+}
+
+.newsContent {
+  clear: left;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  width: 100%;
 }
 
 .newsText {
-  width: 90%;
-  clear: both;
+  margin: 5px;
+  width: 100%;
   text-align: left;
 }
 
 .newsPhoto {
-  list-style: none;
-  height: 300px;
+  max-width: 50%;
+  max-height: 250px;
+  text-align: right;
 }
 

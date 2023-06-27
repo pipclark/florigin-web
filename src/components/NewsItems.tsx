@@ -89,20 +89,22 @@ export default function NewsItems(props: NewsProps) {
 							key={newsItem?.title}
 							onClick={() => newsItem?.link}
 						>
-							<ul className="newsContainer">
-								<li className="newsDate">
+							<div className="newsContainer">
+								<p className="newsDate">
 									{new Date(newsItem?.date).toLocaleDateString(
 										"en-GB",
 										//@ts-ignore
 										options
 									)}
-								</li>
-								<li className="newsTitle">
+								</p>
+								<h2 className="newsTitle">
 									<Link to={newsItem?.link}> {newsItem?.title}</Link>
-								</li>
-								<p className="newsText">{newsItem.mainText}</p>
-							</ul>
-							<img className="newsPhoto" src={newsItem?.photo?.url}></img>
+								</h2>
+								<div className="newsContent">
+									<p className="newsText">{newsItem.mainText}</p>
+									<img className="newsPhoto" src={newsItem?.photo?.url}></img>
+								</div>
+							</div>
 						</li>
 					))}
 			</ul>
