@@ -57,6 +57,8 @@ export default function AboutContent(props: AboutProps) {
 		}
 	}, [info]);
 
+	console.log(parsedAboutText);
+
 	if (!info) {
 		return <p>Loading...</p>;
 	} else {

@@ -4,3 +4,11 @@
   font-size: large;
   line-height: 150%;
 }
+
+a {
+  color: orangered;
+}
+
+.bandMember {
+  color: cadetblue;
+}
