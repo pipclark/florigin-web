@@ -22,7 +22,6 @@ export default function GigList({ gigs, displayPastGigs }: GigListProps) {
 	if (displayPastGigs) {
 		previousGigsSubtitle = "Previous Gigs";
 	}
-	console.log(displayPastGigs);
 	return (
 		<div>
 			<h2>Upcoming Gigs</h2>
@@ -58,7 +57,7 @@ export default function GigList({ gigs, displayPastGigs }: GigListProps) {
 				{gigs
 					.filter((gig) => Date.parse(gig.dateAndTime) < Date.now())
 					.sort((a, b) => {
-						return Date.parse(a?.dateAndTime) - Date.parse(b?.dateAndTime);
+						return Date.parse(b?.dateAndTime) - Date.parse(a?.dateAndTime);
 					})
 					.map((gig) => (
 						<li className="gigItem" key={gig?.title} onClick={() => gig?.link}>
