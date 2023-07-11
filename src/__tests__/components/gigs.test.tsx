@@ -5,19 +5,23 @@ import { BrowserRouter } from "react-router-dom";
 
 const mockContentfulUrl = "www.contentful.example.com";
 
-test("list of gigs and info displayed", async () => {
-	// needs wrapping in BrowserRouter as GigsList has links in it
-	render(
-		<BrowserRouter>
-			<GigsList
-				contentfulUrl={mockContentfulUrl}
-				displayMap={false}
-				displayPastGigs={false}
-			/>
-		</BrowserRouter>
-	);
+describe("list of gigs and info displayed", () => {
+	test("test only future gigs displayed", async () => {
+		// needs wrapping in BrowserRouter as GigsList has links in it
+		render(
+			<BrowserRouter>
+				<GigsList
+					contentfulUrl={mockContentfulUrl}
+					displayMap={false}
+					displayPastGigs={false}
+				/>
+			</BrowserRouter>
+		);
 
-	//const linkElement = screen.getByText(/Lido/i);
-	const gigName = await screen.findByText("Lido");
-	expect(gigName).toBeInTheDocument();
+		//const linkElement = screen.getByText(/Lido/i);
+		const futureGigName = await screen.findByText("Lido");
+		const pastGigName = screen.queryByText("Glastonbury");
+		expect(futureGigName).toBeInTheDocument();
+		expect(pastGigName).not.toBeInTheDocument();
+	});
 });
