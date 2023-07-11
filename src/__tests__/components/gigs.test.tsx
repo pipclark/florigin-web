@@ -1,13 +1,23 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import GigsList from "../../components/Gigs";
+import { BrowserRouter } from "react-router-dom";
 
-test("renders learn react link", () => {
-	const mockContentfulUrl = "www.contentFul.example.com";
+const mockContentfulUrl = "www.contentful.example.com";
 
-	// intercept with msw https://mswjs.io/docs/getting-started/integrate/node
+test("list of gigs and info displayed", async () => {
+	// needs wrapping in BrowserRouter as GigsList has links in it
+	render(
+		<BrowserRouter>
+			<GigsList
+				contentfulUrl={mockContentfulUrl}
+				displayMap={false}
+				displayPastGigs={false}
+			/>
+		</BrowserRouter>
+	);
 
-	render(<GigsList contentfulUrl={mockContentfulUrl} />);
-	const linkElement = screen.getByText(/Gigs/i);
-	expect(linkElement).toBeInTheDocument();
+	//const linkElement = screen.getByText(/Lido/i);
+	const gigName = await screen.findByText("Lido");
+	expect(gigName).toBeInTheDocument();
 });

@@ -37,7 +37,9 @@ export default function GigsList(props: GigsProps) {
 	const displayMap = props.displayMap;
 	const displayPastGigs = props.displayPastGigs;
 
-	const query = `
+	// msw graphql interceptions needs operation type (query), and a name (GetGigs)
+	// contentful works without the "query GetGigs" part
+	const query = ` query GetGigs
   {
     ${contentKey} {
         items {
